@@ -26,7 +26,7 @@ export class MoviesService {
     return (day < 10) ? '0' + day : day;
   }
 
-  getFeature() {
+  getRecentMovies() {
     const today = new Date();
     const lastMonthDate = new Date(new Date().setDate(today.getDate() - 30));
 
@@ -37,5 +37,11 @@ export class MoviesService {
 
     return this.runQuery<MovieDbResponse>(`/discover/movie?primary_release_date.gte
                                             =${ fromDate }&primary_release_date.lte=${ todayDate }`);
+  }
+
+  getPopularMovies() {
+    const query = `/discover/movie?sort_by=popularity.desc`;
+
+    return this.runQuery<MovieDbResponse>(query);
   }
 }

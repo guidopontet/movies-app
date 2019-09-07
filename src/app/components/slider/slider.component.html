@@ -1,4 +1,4 @@
-<ion-slides *ngIf="!poster" [options]="slidesOpts">
+<ion-slides *ngIf="backdrop" [options]="slidesOpts">
   <ion-slide *ngFor="let movie of movies">
     <ion-card>
       <img [src]="movie.backdrop_path | image">
@@ -11,5 +11,17 @@
     <ion-card >
       <img class="slider" [src]="movie.poster_path | image" >
     </ion-card>
+  </ion-slide>
+</ion-slides>
+
+<ion-slides *ngIf="pair" [options]="slidesOpts">
+  <ion-slide *ngFor="let pairMovies of movies | pairs">
+    <ion-row>
+      <ion-col size="12" *ngFor="let movie of pairMovies">
+        <ion-card >
+          <img class="slider" [src]="movie.poster_path | image" >
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-slide>
 </ion-slides>

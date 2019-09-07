@@ -10,6 +10,8 @@ export class SliderComponent implements OnInit {
 
   @Input() movies: Movie[] = [];
   @Input() poster = false;
+  @Input() backdrop = false;
+  @Input() pair = false;
   @Input() slidesPerView = 1.15;
 
   slidesOpts = {};

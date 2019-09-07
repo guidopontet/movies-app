@@ -7,9 +7,9 @@
     </ion-row>
   </ion-grid>
 
-  <app-slider [movies]="recentMovies"></app-slider>
+  <app-slider [movies]="recentMovies" [backdrop]="true"></app-slider>
 
-    <ion-grid fixed>
+  <ion-grid fixed>
     <ion-row>
       <ion-col>
         <h3>Cartelera</h3>
@@ -18,4 +18,14 @@
   </ion-grid>
 
   <app-slider [movies]="recentMovies" [poster]="true" [slidesPerView]="2.5"></app-slider>
+
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col>
+        <h3>Populares</h3>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-slider [movies]="popularMovies" [pair]="true" [slidesPerView]="2.5"></app-slider>
 </ion-content>

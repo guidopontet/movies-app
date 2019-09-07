@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/interfaces/interfaces';
 
 @Component({
@@ -14,6 +14,8 @@ export class SliderComponent implements OnInit {
   @Input() pair = false;
   @Input() slidesPerView = 1.15;
 
+  @Output() loadMoreMovies = new EventEmitter();
+
   slidesOpts = {};
 
   constructor() { }
@@ -23,5 +25,9 @@ export class SliderComponent implements OnInit {
       slidesPerView: this.slidesPerView,
       freeMode: true
     };
+  }
+
+  loadMore() {
+    this.loadMoreMovies.emit();
   }
 }

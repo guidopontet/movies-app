@@ -27,5 +27,8 @@
     </ion-row>
   </ion-grid>
 
-  <app-slider [movies]="popularMovies" [pair]="true" [slidesPerView]="2.5"></app-slider>
+  <app-slider [movies]="popularMovies"
+              [pair]="true"
+              [slidesPerView]="2.5"
+              (loadMoreMovies)="getPopularMovies()"></app-slider>
 </ion-content>

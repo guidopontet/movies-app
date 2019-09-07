@@ -1,12 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MoviesService } from '../services/movies.service';
+import { Movie } from '../interfaces/interfaces';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  constructor() {}
+  recentMovies: Movie[];
+  slidesOpts = {
+    slidesPerView: 1.15,
+    freeMode: true
+  };
+
+  constructor(
+    private moviesService: MoviesService
+  ) {}
+
+  ngOnInit(): void {
+    this.moviesService.getFeature().subscribe(res => {
+      console.log(res);
+      this.recentMovies = res.results;
+    });
+  }
 
 }

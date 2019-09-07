@@ -10,10 +10,6 @@ import { Movie } from '../interfaces/interfaces';
 export class Tab1Page implements OnInit {
 
   recentMovies: Movie[];
-  slidesOpts = {
-    slidesPerView: 1.15,
-    freeMode: true
-  };
 
   constructor(
     private moviesService: MoviesService

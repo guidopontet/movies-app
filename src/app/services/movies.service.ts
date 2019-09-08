@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MovieDbResponse } from '../interfaces/interfaces';
+import { MovieDbResponse, MovieDetail, MovieCredits } from '../interfaces/interfaces';
 import { environment } from 'src/environments/environment';
 
 const URL = environment.url;
@@ -45,5 +45,13 @@ export class MoviesService {
     const query = `/discover/movie?sort_by=popularity.desc&page=${ ++this.popularMoviesPage }`;
 
     return this.runQuery<MovieDbResponse>(query);
+  }
+
+  getMovieDetail(id: string) {
+    return this.runQuery<MovieDetail>(`/movie/${ id }?test=1`);
+  }
+
+  getMovieCredits(id: string) {
+    return this.runQuery<MovieCredits>(`/movie/${ id }/credits?test=1`);
   }
 }

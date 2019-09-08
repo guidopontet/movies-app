@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from 'src/app/interfaces/interfaces';
+import { ModalController } from '@ionic/angular';
+import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 
 @Component({
   selector: 'app-slider',
@@ -18,7 +20,9 @@ export class SliderComponent implements OnInit {
 
   slidesOpts = {};
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {
     this.slidesOpts = {
@@ -29,5 +33,16 @@ export class SliderComponent implements OnInit {
 
   loadMore() {
     this.loadMoreMovies.emit();
+  }
+
+  async showMovieDetail(movieId: string) {
+    const modal = await this.modalController.create({
+      component: MovieDetailComponent,
+      componentProps: {
+        movieId
+      }
+    });
+
+    modal.present();
   }
 }

@@ -3,15 +3,21 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { SliderComponent } from './slider/slider.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 
 
 @NgModule({
+  entryComponents: [
+    MovieDetailComponent
+  ],
   declarations: [
-    SliderComponent
+    SliderComponent,
+    MovieDetailComponent
   ],
   exports: [
-    SliderComponent
+    SliderComponent,
+    MovieDetailComponent
   ],
   imports: [
     CommonModule,

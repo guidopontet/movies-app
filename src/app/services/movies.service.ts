@@ -54,4 +54,8 @@ export class MoviesService {
   getMovieCredits(id: string) {
     return this.runQuery<MovieCredits>(`/movie/${ id }/credits?test=1`);
   }
+
+  searchMovie(text: string) {
+    return this.runQuery<MovieCredits>(`/search/movie?query=${ text }`);
+  }
 }

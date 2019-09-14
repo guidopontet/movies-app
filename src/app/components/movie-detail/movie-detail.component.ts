@@ -19,6 +19,7 @@ export class MovieDetailComponent implements OnInit {
     slidesPerView: 3.3,
     freeMode: true
   };
+  star = 'star-outline';
 
   constructor(
     private movieService: MoviesService,
@@ -27,6 +28,10 @@ export class MovieDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.localDataService.isInFavorites(this.movieId).then(exist => {
+      this.star = exist ? 'star' : 'star-outline';
+    });
+
     this.movieService.getMovieDetail(this.movieId).subscribe(res => {
       this.movie = res;
     });
@@ -41,6 +46,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   favorite() {
-    this.localDataService.saveMovie(this.movie);
+    const saved = this.localDataService.saveMovie(this.movie);
+    this.star = saved ? 'star' : 'star-outline';
   }
 }
